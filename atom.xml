@@ -11,7 +11,29 @@
   <rights>All rights reserved 2026, 明月照大江</rights>
   <subtitle>明月照大江发布页</subtitle>
   <title>明月书阁</title>
-  <updated>2026-08-29T00:17:00.000Z</updated>
+  <updated>2026-08-29T00:51:52.000Z</updated>
+  <entry>
+    <author>
+      <name>明月照大江</name>
+    </author>
+    <category term="公告" scheme="https://skybook.legado1.top/categories/%E5%85%AC%E5%91%8A/"/>
+    <category term="推广" scheme="https://skybook.legado1.top/tags/%E6%8E%A8%E5%B9%BF/"/>
+    <category term="AI" scheme="https://skybook.legado1.top/tags/AI/"/>
+    <category term="API" scheme="https://skybook.legado1.top/tags/API/"/>
+    <content>
+      <![CDATA[<blockquote><p>说明：本文为推广文章。通过文末<a href="https://a6api.com/?auth=register&aff=z86t">推广链接</a>注册会给本站带来一点返利，不影响你的使用价格；服务本身请自行评估、理性充值。</p></blockquote><h2 id="这是干嘛的"><a href="#这是干嘛的" class="headerlink" title="这是干嘛的"></a>这是干嘛的</h2><p>最近聊 AI 的书友越来越多：用 AI 写书源、跑翻译、挂酒馆、做内容摘要……都绕不开一个问题——<strong>去哪搞一个便宜又稳定的 API Key？</strong></p><p><a href="https://a6api.com/">A6api</a> 是一个 <strong>Token 聚合站（大模型 API 网关 &#x2F; 模型市场）</strong>：平台接入多家模型供应商，把 OpenAI、Claude、Gemini、DeepSeek、GLM、图片模型等常用方向聚到一个入口，同一模型多家商家同台报价，系统自动比价、优选线路。</p><p>一句话总结：<strong>你只管用一个 Key 调模型，比价和稳定性这些麻烦事交给平台。</strong></p><h2 id="为什么值得试试"><a href="#为什么值得试试" class="headerlink" title="为什么值得试试"></a>为什么值得试试</h2><ul><li><strong>全网比价，价格卷下来</strong>：多商家供货形成真实竞争，模型市场直接展示输入价、输出价、实时成功率和延迟，不用自己到处找低价渠道。</li><li><strong>智能优选，不用手动换 Key</strong>：统一 API 入口按 OpenAI 兼容方式调用，遇到部分线路异常、限流或不可用时，系统自动切换到其他可用渠道，在价格、成功率和延迟之间做平衡。</li><li><strong>一个 Key 通吃三种协议</strong>：OpenAI 兼容（推荐）、Claude 原生（<code>/messages</code>）、Gemini 原生（<code>/v1beta</code>）共用一套令牌，旧项目基本改个 <code>baseURL</code> 就能用。</li><li><strong>模型覆盖全</strong>：对话、编程、长文本、多模态之外，还有图像生成、图像编辑、文本向量、重排序、语音转文字 &#x2F; 合成，甚至 Midjourney、Suno 音乐任务。</li><li><strong>低额充值起</strong>：不用先买大套餐，先小额充值跑通一次真实调用，确认便宜、线路省心，再决定要不要长期用。</li><li><strong>计费透明</strong>：每次请求都会记录输入 &#x2F; 输出 Token、缓存读写、模型倍率和实际扣费，流式响应也尽量返回用量信息，花在哪一眼能看懂。</li></ul><h2 id="怎么用（3-步）"><a href="#怎么用（3-步）" class="headerlink" title="怎么用（3 步）"></a>怎么用（3 步）</h2><ol><li>注册 &#x2F; 登录，进控制台创建令牌，得到形如 <code>sk-xxxxxxxx</code> 的 API Key；</li><li>到<a href="https://a6api.com/models">模型市场</a>按品牌、价格、成功率挑模型，复制模型名；</li><li>在你的工具里把 <code>baseURL</code> 换成 <code>https://api.a6api.com</code>，Key 换成自己的，模型名填刚复制的，就完事了。</li></ol><p>以 Python（OpenAI SDK）为例：</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI</span><br><span class="line"></span><br><span class="line">client = OpenAI(</span><br><span class="line">    api_key=<span class="string">&quot;sk-xxxxxxxxxxxxxxxxxxxxxxxx&quot;</span>,</span><br><span class="line">    base_url=<span class="string">&quot;https://api.a6api.com&quot;</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">result = client.chat.completions.create(</span><br><span class="line">    model=<span class="string">&quot;gpt-5.4-mini&quot;</span>,  <span class="comment"># 模型名以模型市场当前列表为准</span></span><br><span class="line">    messages=[</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;你是一个简洁可靠的助手。&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;用一句话解释什么是 API 网关。&quot;</span>&#125;,</span><br><span class="line">    ],</span><br><span class="line">)</span><br><span class="line"><span class="built_in">print</span>(result.choices[<span class="number">0</span>].message.content)</span><br></pre></td></tr></table></figure><p>习惯命令行的话，curl 也一样：</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl https://api.a6api.com/chat/completions \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;Authorization: Bearer sk-xxxxxxxxxxxxxxxxxxxxxxxx&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">    &quot;model&quot;: &quot;gpt-5.4-mini&quot;,</span></span><br><span class="line"><span class="string">    &quot;messages&quot;: [&#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;你好，介绍一下你自己&quot;&#125;]</span></span><br><span class="line"><span class="string">  &#125;&#x27;</span></span><br></pre></td></tr></table></figure><h2 id="适合谁"><a href="#适合谁" class="headerlink" title="适合谁"></a>适合谁</h2><ul><li>用阅读 APP 折腾书源，想拿 AI 批量生成、修补书源的；</li><li>各种支持「自定义 OpenAI 接口」的客户端（酒馆、沉浸式翻译、聊天盒等），想找个便宜中转的；</li><li>自己写脚本、小工具调大模型，懒得维护好几家供应商账号的。</li></ul><h2 id="链接汇总"><a href="#链接汇总" class="headerlink" title="链接汇总"></a>链接汇总</h2><ul><li>官网：<a href="https://a6api.com/">https://a6api.com/</a></li><li><strong>推广链接</strong>：<a href="https://a6api.com/?auth=register&aff=z86t">https://a6api.com/?auth=register&amp;aff=z86t</a></li><li>接入文档：<a href="https://a6api.com/docs">https://a6api.com/docs</a></li><li>Telegram：<a href="https://t.me/a6apicom">https://t.me/a6apicom</a></li></ul><p>最后照例提醒：第三方聚合站请自行评估稳定性与隐私风险，敏感信息不要放进请求里，按需小额充值就好。</p>]]>
+    </content>
+    <id>https://skybook.legado1.top/posts/b7ed07fe.html</id>
+    <link href="https://skybook.legado1.top/posts/b7ed07fe.html"/>
+    <published>2026-08-29T00:40:00.000Z</published>
+    <summary>
+      <![CDATA[<blockquote>
+<p>说明：本文为推广文章。通过文末<a href="https://a6api.com/?auth=register&aff=z86t">推广链接</a>注册会给本站带来一点返利，不影响你的使用价格；服务本身请自行评估、理性充值。</p>
+</bloc]]>
+    </summary>
+    <title>A6api：便宜省心的 AI API 聚合站</title>
+    <updated>2026-08-29T00:51:52.000Z</updated>
+  </entry>
   <entry>
     <author>
       <name>明月照大江</name>
@@ -455,27 +477,5 @@
     </summary>
     <title>《她是贵族学院的女配》</title>
     <updated>2026-08-20T00:15:58.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>明月照大江</name>
-    </author>
-    <category term="好书推荐" scheme="https://skybook.legado1.top/categories/%E5%A5%BD%E4%B9%A6%E6%8E%A8%E8%8D%90/"/>
-    <category term="起点" scheme="https://skybook.legado1.top/tags/%E8%B5%B7%E7%82%B9/"/>
-    <category term="已完结" scheme="https://skybook.legado1.top/tags/%E5%B7%B2%E5%AE%8C%E7%BB%93/"/>
-    <content>
-      <![CDATA[<blockquote><p>作者：愤怒的香蕉</p></blockquote><p>谢谢馒头同学提供的书友群（邪恶者同好会）：32632289（已满）由kIsS铭同学提供的隐杀二群（ｃJ的香蕉）：20137707隐杀高V群：43237511（香蕉船）（高V会员加入，进去后请改成起点的呢称）欢迎各位XｅYD的同学们莅临指教^_^</p><h2 id="作品信息"><a href="#作品信息" class="headerlink" title="作品信息"></a>作品信息</h2><table width="100%" class="hide"><tbody><tr>              <td width="32%">作品分类：</td>              <td width="32%">连载状态：已完结</td>              <td width="36%">最后更新：2011-07-01</td>            </tr><tr>              <td>作品性质：免费</td>              <td>授权级别：转载作品</td>              <td>首发网站：起点</td>            </tr><tr>              <td>全文字数：1680600</td>              <td>章 节 数：0</td>              <td>收 藏 数：45</td>            </tr>            <tr>              <td>总点击数：169968</td>              <td>本月点击：386</td>              <td>本周点击：68</td>            </tr>            <tr>              <td>总推荐数：5507</td>              <td>本月推荐：0</td>              <td>本周推荐：0</td>            </tr>          </tbody></table><h2 id="书评"><a href="#书评" class="headerlink" title="书评"></a>书评</h2><ul><li>1，没有逻辑性，把女性写的投怀送抱，只适合15-25岁的没脑子的男书众。<br>2，男主设定90年代的大家族外孙，父母双亡，我是底层挣扎生存的贫民，毫无代入感。<br>真乃毒草，剧毒无比。白瞎了8.2的分了。<br>——看书18年太挑了</li><li>虽然作者很出名，赘婿写的也不错，但是这本书威慑呢么分数这么高呢？爱屋及乌？</li><li>怎么说呢，值得一看的书吧<br>十年前（也许十几年前）的这本书更新的时候就看过，看了前两卷，后面的就没追<br>这次又捡起来看完了<br>整体情节还是非常好的，扮猪吃老虎的爽感<br>但是文字叙述水平现在看起来真的非常一般，同样文风的文理双修，文笔描述就更好一些<br>这本书最大的毛病是经常不加主语，不知道谁在干什么<br>另外打斗写的一般，不是文笔不好，只是经常切镜头，看得头晕<br>但整体情节设计还是不错的，我觉得加上情怀，给四星吧</li><li>情节俗套不妨碍妙笔生花</li><li>这本书无论是剧情还是文笔都是网络文学都市类的一座丰碑，作者后面的赘婿断断续续写了十多年，其实在网文里也还不错，但远远比不上这本书的十之一二，而作者现在也很难有当时的心境写出这样的书来了。<br>一本在作者巅峰状态，并且在网文的黄金时期写出来的一本神作，可遇而不可求，我认为现在想写好都市（后宫类）小说的都可以参考一二，现在已经很难看到接近甚至有一丝神韵的都市小说了。</li></ul>]]>
-    </content>
-    <id>https://skybook.legado1.top/posts/eb9a538a.html</id>
-    <link href="https://skybook.legado1.top/posts/eb9a538a.html"/>
-    <published>2026-08-19T12:16:23.000Z</published>
-    <summary>
-      <![CDATA[<blockquote>
-<p>作者：愤怒的香蕉</p>
-</blockquote>
-<p>谢谢馒头同学提供的书友群（邪恶者同好会）：32632289（已满）由kIsS铭同学提供的隐杀二群（ｃJ的香蕉）：20137707隐杀高V群：43237511（香蕉船）（高V会员加入，进去后]]>
-    </summary>
-    <title>《隐杀》</title>
-    <updated>2026-08-19T12:16:29.000Z</updated>
   </entry>
 </feed>
