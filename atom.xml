@@ -1,80 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>明月书阁</title><description>明月照大江发布页</description><link>https://skybook.skybbk.workers.dev/</link><language>zh-cn</language><item><title>A6api：便宜省心的 AI API 聚合站</title><link>https://skybook.skybbk.workers.dev/posts/2026-08-29-a6api-%E4%BE%BF%E5%AE%9C%E7%9C%81%E5%BF%83%E7%9A%84-ai-api-%E8%81%9A%E5%90%88%E7%AB%99-1b7b8e2f/</link><guid isPermaLink="true">https://skybook.skybbk.workers.dev/posts/2026-08-29-a6api-%E4%BE%BF%E5%AE%9C%E7%9C%81%E5%BF%83%E7%9A%84-ai-api-%E8%81%9A%E5%90%88%E7%AB%99-1b7b8e2f/</guid><description>🎁 注册直达（推广链接） ：https://a6api.com/?auth=register&amp;aff=z86t 说明：本文为推广文章。通过上面的推广链接注册会给本站带来一点返利，不影响你的使用价格；服务本身请自行评估、理性充值。 这是干嘛的 最近聊 AI 的书友越来越多：用 AI 写书源、跑翻译、挂酒馆、做内容摘要……都绕不开一个问题—— 去哪搞一个便宜又稳定的 API Key？ A6api 是一个 Token 聚合站（大模型 API 网关 / 模型市场） ：平台接入多家模型供应商，把 OpenAI、Claude、Gemini、DeepSeek、GLM、图片模型等常用方向聚到一个入口，同一模型多家商家同台报价，系统自动比价、优选线路。 一句话总结： 你只管用一个 Key 调模型，比价和稳定性这些麻烦事交给平台。 A6api 首页的今日低价入口：六个模型的实时价格 为什么值得试试 全网比价，价格卷下来 ：多商家供货形成真实竞争，模型市场直接展示输入价、输出价、实时成功率和延迟，不用自己到处找低价渠道。 智能优选，不用手动换 Key ：统一 API 入口按 OpenAI 兼容方式调用，遇…</description><pubDate>Sat, 29 Aug 2026 00:40:00 GMT</pubDate><content:encoded>&gt; 🎁 **注册直达（推广链接）**：[https://a6api.com/?auth=register&amp;aff=z86t](https://a6api.com/?auth=register&amp;aff=z86t)
-
-&gt; 说明：本文为推广文章。通过上面的推广链接注册会给本站带来一点返利，不影响你的使用价格；服务本身请自行评估、理性充值。
-
-## 这是干嘛的
-
-最近聊 AI 的书友越来越多：用 AI 写书源、跑翻译、挂酒馆、做内容摘要……都绕不开一个问题——**去哪搞一个便宜又稳定的 API Key？**
-
-[A6api](https://a6api.com/) 是一个 **Token 聚合站（大模型 API 网关 / 模型市场）**：平台接入多家模型供应商，把 OpenAI、Claude、Gemini、DeepSeek、GLM、图片模型等常用方向聚到一个入口，同一模型多家商家同台报价，系统自动比价、优选线路。
-
-一句话总结：**你只管用一个 Key 调模型，比价和稳定性这些麻烦事交给平台。**
-
-![A6api 首页的今日低价入口：六个模型的实时价格](/img/a6api/a6api-price-cards.png)
-
-## 为什么值得试试
-
-- **全网比价，价格卷下来**：多商家供货形成真实竞争，模型市场直接展示输入价、输出价、实时成功率和延迟，不用自己到处找低价渠道。
-- **智能优选，不用手动换 Key**：统一 API 入口按 OpenAI 兼容方式调用，遇到部分线路异常、限流或不可用时，系统自动切换到其他可用渠道，在价格、成功率和延迟之间做平衡。
-- **一个 Key 通吃三种协议**：OpenAI 兼容（推荐）、Claude 原生（`/messages`）、Gemini 原生（`/v1beta`）共用一套令牌，旧项目基本改个 `baseURL` 就能用。
-- **模型覆盖全**：对话、编程、长文本、多模态之外，还有图像生成、图像编辑、文本向量、重排序、语音转文字 / 合成，甚至 Midjourney、Suno 音乐任务。
-- **低额充值起**：不用先买大套餐，先小额充值跑通一次真实调用，确认便宜、线路省心，再决定要不要长期用。
-- **计费透明**：每次请求都会记录输入 / 输出 Token、缓存读写、模型倍率和实际扣费，流式响应也尽量返回用量信息，花在哪一眼能看懂。
-
-## 怎么用（3 步）
-
-1. 注册 / 登录，进控制台创建令牌，得到形如 `sk-xxxxxxxx` 的 API Key；
-2. 到[模型市场](https://a6api.com/models)按品牌、价格、成功率挑模型，复制模型名；
-3. 在你的工具里把 `baseURL` 换成 `https://api.a6api.com`，Key 换成自己的，模型名填刚复制的，就完事了。
-
-![A6api 模型市场：按商家展示输入价、输出价和实时倍率](/img/a6api/a6api-model-market.png)
-
-以 Python（OpenAI SDK）为例：
-
-```python
-from openai import OpenAI
-
-client = OpenAI(
-    api_key=&quot;sk-xxxxxxxxxxxxxxxxxxxxxxxx&quot;,
-    base_url=&quot;https://api.a6api.com&quot;,
-)
-
-result = client.chat.completions.create(
-    model=&quot;gpt-5.4-mini&quot;,  # 模型名以模型市场当前列表为准
-    messages=[
-        {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;你是一个简洁可靠的助手。&quot;},
-        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;用一句话解释什么是 API 网关。&quot;},
-    ],
-)
-print(result.choices[0].message.content)
-```
-
-习惯命令行的话，curl 也一样：
-
-```bash
-curl https://api.a6api.com/chat/completions \
-  -H &quot;Content-Type: application/json&quot; \
-  -H &quot;Authorization: Bearer sk-xxxxxxxxxxxxxxxxxxxxxxxx&quot; \
-  -d &apos;{
-    &quot;model&quot;: &quot;gpt-5.4-mini&quot;,
-    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;你好，介绍一下你自己&quot;}]
-  }&apos;
-```
-
-## 适合谁
-
-- 用阅读 APP 折腾书源，想拿 AI 批量生成、修补书源的；
-- 各种支持「自定义 OpenAI 接口」的客户端（酒馆、沉浸式翻译、聊天盒等），想找个便宜中转的；
-- 自己写脚本、小工具调大模型，懒得维护好几家供应商账号的。
-
-## 链接汇总
-
-- 官网：&lt;https://a6api.com/&gt;
-- **推广链接**：&lt;https://a6api.com/?auth=register&amp;aff=z86t&gt;
-- 接入文档：&lt;https://a6api.com/docs&gt;
-- Telegram：&lt;https://t.me/a6apicom&gt;
-
-最后照例提醒：第三方聚合站请自行评估稳定性与隐私风险，敏感信息不要放进请求里，按需小额充值就好。</content:encoded></item><item><title>《夺回主角光环（重生）》</title><link>https://skybook.skybbk.workers.dev/posts/2026-08-29-%E5%A4%BA%E5%9B%9E%E4%B8%BB%E8%A7%92%E5%85%89%E7%8E%AF-%E9%87%8D%E7%94%9F-776ea79b/</link><guid isPermaLink="true">https://skybook.skybbk.workers.dev/posts/2026-08-29-%E5%A4%BA%E5%9B%9E%E4%B8%BB%E8%A7%92%E5%85%89%E7%8E%AF-%E9%87%8D%E7%94%9F-776ea79b/</guid><description>作者：猪美美 文案不知道怎么写，现贴出晏知秋同学的评论做文案吧，谢谢晏同学。 这篇文的攻特别的可爱——！他们在一起的时候我有一种这个世界还有真爱的感觉。攻看上去很像是别扭受233被主角一点一点的吸引，想要表达又有一种我不开口，你快点追上来啦2333顺便我脑补了一下，你追我啊追到我我就把你嘿嘿嘿的场景。 再来就是受，我觉得他有一种独特的魅力——！看着他，我觉得他会发光！反正就是我特别喜欢的那种类型。有点小坏，又特别的有执行力（？）看到他主动去追攻去踏入攻的圈子里的时候，我的心就化了。 诚如大大所说的，他们现在还没有真正的互相交心。主角更多的是把攻当做前世的那个爱人来看。而攻以为他们是在进行交易吧。所以有一种怅然若失的感觉。日后发觉自己对他是爱的感觉，会有怎么样可爱的表现呢？期待inb 主角的弟弟看上去有点料，像是被替身了（…？）主角是要从谁的手中抢夺光环呢…？ 不过大大的文案有一种……唔，无从吐槽的感觉。明明文那么可爱！差点就被错过了。 立意:立意待补充 作品信息 作品分类：总裁豪门 连载状态：连载中 最后更新：2017 08 01 作品性质：免费 授权级别：转载作品 首发网站：晋江 全…</description><pubDate>Sat, 29 Aug 2026 00:16:53 GMT</pubDate><content:encoded>&gt; 作者：猪美美
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>明月书阁</title><description>明月照大江发布页</description><link>https://skybook.skybbk.workers.dev/</link><language>zh-cn</language><item><title>《夺回主角光环（重生）》</title><link>https://skybook.skybbk.workers.dev/posts/2026-08-29-%E5%A4%BA%E5%9B%9E%E4%B8%BB%E8%A7%92%E5%85%89%E7%8E%AF-%E9%87%8D%E7%94%9F-776ea79b/</link><guid isPermaLink="true">https://skybook.skybbk.workers.dev/posts/2026-08-29-%E5%A4%BA%E5%9B%9E%E4%B8%BB%E8%A7%92%E5%85%89%E7%8E%AF-%E9%87%8D%E7%94%9F-776ea79b/</guid><description>作者：猪美美 文案不知道怎么写，现贴出晏知秋同学的评论做文案吧，谢谢晏同学。 这篇文的攻特别的可爱——！他们在一起的时候我有一种这个世界还有真爱的感觉。攻看上去很像是别扭受233被主角一点一点的吸引，想要表达又有一种我不开口，你快点追上来啦2333顺便我脑补了一下，你追我啊追到我我就把你嘿嘿嘿的场景。 再来就是受，我觉得他有一种独特的魅力——！看着他，我觉得他会发光！反正就是我特别喜欢的那种类型。有点小坏，又特别的有执行力（？）看到他主动去追攻去踏入攻的圈子里的时候，我的心就化了。 诚如大大所说的，他们现在还没有真正的互相交心。主角更多的是把攻当做前世的那个爱人来看。而攻以为他们是在进行交易吧。所以有一种怅然若失的感觉。日后发觉自己对他是爱的感觉，会有怎么样可爱的表现呢？期待inb 主角的弟弟看上去有点料，像是被替身了（…？）主角是要从谁的手中抢夺光环呢…？ 不过大大的文案有一种……唔，无从吐槽的感觉。明明文那么可爱！差点就被错过了。 立意:立意待补充 作品信息 作品分类：总裁豪门 连载状态：连载中 最后更新：2017 08 01 作品性质：免费 授权级别：转载作品 首发网站：晋江 全…</description><pubDate>Sat, 29 Aug 2026 00:16:53 GMT</pubDate><content:encoded>&gt; 作者：猪美美
 
 文案不知道怎么写，现贴出晏知秋同学的评论做文案吧，谢谢晏同学。
 
@@ -946,4 +870,53 @@ N周目过后，锦林发现他们看自己的眼神不一样了
 女主自强自立，不易信任他人。三个男主各有各的缺点，陆像疯狗，谢是偷窥，盛又偏执，不过好香
 这篇才是真正意义上，女主只想好好学习，认真生活，男主们穷追不舍，死缠烂打。
 感觉作者偏爱的还是挺明显的，最爱盛，陆感觉一直不是疯狗就是在疯狗的路上，谢的戏份太少了，虽有情节交代，但人物弧光不明显。
-嗨嗨，为啥男主只有仨，再凑一个成f4不行吗，感觉那个褚修和皇太子陆也很合适嘛</content:encoded></item></channel></rss>
+嗨嗨，为啥男主只有仨，再凑一个成f4不行吗，感觉那个褚修和皇太子陆也很合适嘛</content:encoded></item><item><title>《隐杀》</title><link>https://skybook.skybbk.workers.dev/posts/2026-08-19-%E9%9A%90%E6%9D%80-587c1d38/</link><guid isPermaLink="true">https://skybook.skybbk.workers.dev/posts/2026-08-19-%E9%9A%90%E6%9D%80-587c1d38/</guid><description>作者：愤怒的香蕉 谢谢馒头同学提供的书友群（邪恶者同好会）：32632289（已满）由kIsS铭同学提供的隐杀二群（ｃJ的香蕉）：20137707隐杀高V群：43237511（香蕉船）（高V会员加入，进去后请改成起点的呢称）欢迎各位XｅYD的同学们莅临指教^ ^ 作品信息 作品分类： 连载状态：已完结 最后更新：2011 07 01 作品性质：免费 授权级别：转载作品 首发网站：起点 全文字数：1680600 章 节 数：0 收 藏 数：45 总点击数：169968 本月点击：386 本周点击：68 总推荐数：5507 本月推荐：0 本周推荐：0 书评 1，没有逻辑性，把女性写的投怀送抱，只适合15 25岁的没脑子的男书众。 2，男主设定90年代的大家族外孙，父母双亡，我是底层挣扎生存的贫民，毫无代入感。 真乃毒草，剧毒无比。白瞎了8.2的分了。 ——看书18年太挑了 虽然作者很出名，赘婿写的也不错，但是这本书威慑呢么分数这么高呢？爱屋及乌？ 怎么说呢，值得一看的书吧 十年前（也许十几年前）的这本书更新的时候就看过，看了前两卷，后面的就没追 这次又捡起来看完了 整体情节还是非常好的，扮…</description><pubDate>Wed, 19 Aug 2026 12:16:23 GMT</pubDate><content:encoded>&gt; 作者：愤怒的香蕉
+
+谢谢馒头同学提供的书友群（邪恶者同好会）：32632289（已满）由kIsS铭同学提供的隐杀二群（ｃJ的香蕉）：20137707隐杀高V群：43237511（香蕉船）（高V会员加入，进去后请改成起点的呢称）欢迎各位XｅYD的同学们莅临指教^_^
+
+## 作品信息
+&lt;table width=&quot;100%&quot; class=&quot;hide&quot;&gt;
+			&lt;tbody&gt;&lt;tr&gt;
+              &lt;td width=&quot;32%&quot;&gt;作品分类：&lt;/td&gt;
+              &lt;td width=&quot;32%&quot;&gt;连载状态：已完结&lt;/td&gt;
+              &lt;td width=&quot;36%&quot;&gt;最后更新：2011-07-01&lt;/td&gt;
+            &lt;/tr&gt;
+			&lt;tr&gt;
+              &lt;td&gt;作品性质：免费&lt;/td&gt;
+              &lt;td&gt;授权级别：转载作品&lt;/td&gt;
+              &lt;td&gt;首发网站：起点&lt;/td&gt;
+            &lt;/tr&gt;
+			&lt;tr&gt;
+              &lt;td&gt;全文字数：1680600&lt;/td&gt;
+              &lt;td&gt;章 节 数：0&lt;/td&gt;
+              &lt;td&gt;收 藏 数：45&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td&gt;总点击数：169968&lt;/td&gt;
+              &lt;td&gt;本月点击：386&lt;/td&gt;
+              &lt;td&gt;本周点击：68&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td&gt;总推荐数：5507&lt;/td&gt;
+              &lt;td&gt;本月推荐：0&lt;/td&gt;
+              &lt;td&gt;本周推荐：0&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;&lt;/table&gt;
+
+## 书评
+- 1，没有逻辑性，把女性写的投怀送抱，只适合15-25岁的没脑子的男书众。
+2，男主设定90年代的大家族外孙，父母双亡，我是底层挣扎生存的贫民，毫无代入感。
+真乃毒草，剧毒无比。白瞎了8.2的分了。
+——看书18年太挑了
+- 虽然作者很出名，赘婿写的也不错，但是这本书威慑呢么分数这么高呢？爱屋及乌？
+- 怎么说呢，值得一看的书吧
+十年前（也许十几年前）的这本书更新的时候就看过，看了前两卷，后面的就没追
+这次又捡起来看完了
+整体情节还是非常好的，扮猪吃老虎的爽感
+但是文字叙述水平现在看起来真的非常一般，同样文风的文理双修，文笔描述就更好一些
+这本书最大的毛病是经常不加主语，不知道谁在干什么
+另外打斗写的一般，不是文笔不好，只是经常切镜头，看得头晕
+但整体情节设计还是不错的，我觉得加上情怀，给四星吧
+- 情节俗套不妨碍妙笔生花
+- 这本书无论是剧情还是文笔都是网络文学都市类的一座丰碑，作者后面的赘婿断断续续写了十多年，其实在网文里也还不错，但远远比不上这本书的十之一二，而作者现在也很难有当时的心境写出这样的书来了。
+一本在作者巅峰状态，并且在网文的黄金时期写出来的一本神作，可遇而不可求，我认为现在想写好都市（后宫类）小说的都可以参考一二，现在已经很难看到接近甚至有一丝神韵的都市小说了。</content:encoded></item></channel></rss>
