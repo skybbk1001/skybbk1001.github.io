@@ -29,10 +29,22 @@ const aliases = {"/2026/05/29/书源/44小文/":"/posts/2026-05-29-书源-44小�
     const render = (range) => {
       buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.range === range)));
       const items = payload?.pages?.[range] || [];
-      const ordered = items
-        .map((item) => ({ item, path: canonicalPath(item.path) }))
-        .filter(({ path }) => metadata[path])
-        .slice(0, 50);
+
+      // 同一个路径可能有多条历史记录：文章的旧短链（abbrlink/permalink）和新
+      // slug 都会落进统计表，canonicalPath 会把它们折叠成同一个路径。
+      // 这里必须按折叠后的路径合并 PV，否则同一篇文章会占两行、
+      // 而且两次阅读量被拆开显示（实测「朗读引擎」Next 曾显示 683 和 219 两条）。
+      const merged = new Map();
+      for (const item of items) {
+        const path = canonicalPath(item.path);
+        if (!metadata[path]) continue;
+        const pv = Number(item.pv) || 0;
+        const prev = merged.get(path);
+        if (prev) prev.pv += pv;
+        else merged.set(path, { path, pv });
+      }
+
+      const ordered = [...merged.values()].sort((a, b) => b.pv - a.pv).slice(0, 50);
 
       if (!ordered.length) {
         list.innerHTML = `
@@ -44,7 +56,7 @@ const aliases = {"/2026/05/29/书源/44小文/":"/posts/2026-05-29-书源-44小�
       }
 
       list.innerHTML = ordered
-        .map(({ item, path }, index) => {
+        .map(({ path, pv }, index) => {
           const post = metadata[path];
           const rankNum = index + 1;
           const topClass = rankNum === 1 ? 'top-1' : rankNum === 2 ? 'top-2' : rankNum === 3 ? 'top-3' : '';
@@ -53,7 +65,7 @@ const aliases = {"/2026/05/29/书源/44小文/":"/posts/2026-05-29-书源-44小�
               <span class="rank-badge ${topClass}">${rankNum}</span>
               <a href="${escapeHtml(path)}">${escapeHtml(post.title)}</a>
               <span class="rank-views">
-                <strong>${Number(item.pv).toLocaleString()}</strong> 次阅读
+                <strong>${pv.toLocaleString()}</strong> 次阅读
               </span>
             </article>
           `;
